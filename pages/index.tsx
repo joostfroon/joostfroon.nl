@@ -2,8 +2,7 @@ import { createContext } from 'react';
 import { GraphQLClient, gql } from 'graphql-request';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import Project from '../components/Project';
+import Project from '../components/project/Project';
 import { ProjectInterface } from '../interfaces';
 
 
@@ -36,6 +35,21 @@ export const getStaticProps: GetStaticProps = async () => {
       personal(where: {id: "${PERSONAL_ID}"}) {
         id
         name
+        nationality
+        number
+        postalCode
+        email
+        highlighedSkills
+        country
+        companyName
+        languages {
+          ... on Language {
+            id
+            name
+          }
+        }
+        tel
+        street
       }
     }
   `);
@@ -46,7 +60,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Index({ data }: Props) {
-  console.log('data', data);
   return (
     <AppContext.Provider value={data}>
       <Head>
@@ -58,11 +71,11 @@ export default function Index({ data }: Props) {
         HEADER
       </header>
 
-      <main>
+      <div>
         {data.projects.map((project) => (
           <Project key={project.id} {...project} />
         ))}
-      </main>
+      </div>
 
     </AppContext.Provider>
   );

@@ -1,4 +1,5 @@
-import { ProjectInterface } from '../interfaces';
+import { ProjectInterface } from '../../interfaces';
+import ProjectStyled from './Project.styled';
 
 export default function Project({ 
   name,
@@ -12,7 +13,7 @@ export default function Project({
   const dateFormat = new Date(date).toLocaleDateString('nl-NL', format);
   
   return (
-    <div>
+    <ProjectStyled>
       <div>{name}, {location} {role.length > 0 && `-- ${role.map(r => r.replaceAll('_', ' '))}`}</div>
 
       {dateFormat && (
@@ -22,6 +23,6 @@ export default function Project({
       <div>{description}</div>
       <div>{skills.map(skill => <span key={skill}>{skill.replaceAll('_', ' ')} </span>)}</div>
       <br />
-    </div>
+    </ProjectStyled>
   );
 };
