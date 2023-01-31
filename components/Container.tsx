@@ -1,7 +1,11 @@
-interface Props {
-    children: React.ReactNode;
-}
+import styled, { css } from 'styled-components';
 
-export default function Container({ children }: Props) {
-    return <div>{children}</div>;
-};
+export default styled.div`
+  max-width: 75rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+
+  ${({ $small }: { $small?: boolean }) => $small && css`
+    max-width: 62rem;
+  `}
+`;

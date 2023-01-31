@@ -1,10 +1,12 @@
-import { createContext } from 'react';
 import { GraphQLClient, gql } from 'graphql-request';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Project from '../components/project/Project';
-import { ProjectInterface } from '../interfaces';
-
+import Projects from '../components/projects/Projects';
+import { ProjectInterface, PersonalInterface } from '../interfaces';
+import HighlightedSkills from '../components/HighlightedSkills';
+import Intro from '../components/Intro';
+import Personal from '../components/Personal';
+import { AppContextProvider } from '../context/app';
 
 const NUMBER_OF_PROJECTS = 50;
 const PERSONAL_ID = 'clcbx00yv72uu0bw6y8h4outs';
@@ -13,10 +15,9 @@ const API_URL = 'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clazi958
 interface Props {
   data: {
     projects: ProjectInterface[];
+    personal: PersonalInterface;
   }
 }
-
-const AppContext = createContext<any>(null);
 
 export const getStaticProps: GetStaticProps = async () => {
   const graphQLClient = new GraphQLClient(API_URL);
@@ -34,14 +35,27 @@ export const getStaticProps: GetStaticProps = async () => {
       }
       personal(where: {id: "${PERSONAL_ID}"}) {
         id
+        birthday
+        description
+        title
         name
         nationality
         number
         postalCode
         email
         highlighedSkills
+        hobbies
         country
         companyName
+        city
+        province
+        gitlab
+        linkedin
+        image {
+          url
+          height
+          width
+        }
         languages {
           ... on Language {
             id
@@ -50,6 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
         }
         tel
         street
+        website
       }
     }
   `);
@@ -61,22 +76,18 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Index({ data }: Props) {
   return (
-    <AppContext.Provider value={data}>
+    <AppContextProvider {...data}>
       <Head>
-        <title>Freelance Front-end developer | Joost Froon</title>
-        <meta name="description" content="Front-end developer and React developer located in Zevenaar near Arhnem" />
+        <title>{data.personal.description} | {data.personal.name}</title>
+        <meta name="description" content={data.personal.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
-        HEADER
+        <Intro />
+        <Personal />
+        <HighlightedSkills />
       </header>
-
-      <div>
-        {data.projects.map((project) => (
-          <Project key={project.id} {...project} />
-        ))}
-      </div>
-
-    </AppContext.Provider>
+      <Projects />
+    </AppContextProvider>
   );
 };
