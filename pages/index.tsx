@@ -7,11 +7,6 @@ import HighlightedSkills from '../components/HighlightedSkills';
 import Intro from '../components/Intro';
 import Personal from '../components/Personal';
 import { AppContextProvider } from '../context/app';
-
-const NUMBER_OF_PROJECTS = 50;
-const PERSONAL_ID = 'clcbx00yv72uu0bw6y8h4outs';
-const API_URL = 'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clazi958h1r9301uk014zh9ho/master';
-
 interface Props {
   data: {
     projects: ProjectInterface[];
@@ -20,11 +15,12 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const graphQLClient = new GraphQLClient(API_URL);
+  const apiUrl = process.env.API_URL as string;
+  const graphQLClient = new GraphQLClient(apiUrl);
 
   const data = await graphQLClient.request(gql`
     query Projects {
-      projects(orderBy: date_DESC, first: ${NUMBER_OF_PROJECTS}) {
+      projects(orderBy: date_DESC, first: ${process.env.NUMBER_OF_PROJECTS}) {
         name
         id
         date
@@ -33,7 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
         skills
         role
       }
-      personal(where: {id: "${PERSONAL_ID}"}) {
+      personal(where: {id: "${process.env.PERSONAL_ID}"}) {
         id
         birthday
         description
