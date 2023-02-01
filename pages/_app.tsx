@@ -8,7 +8,7 @@ import theme from '../layout/theme';
 import { ProjectInterface, PersonalInterface } from '../interfaces';
 
 interface Props {
-  data: {
+  data?: {
     projects: ProjectInterface[];
     personal: PersonalInterface;
   }
