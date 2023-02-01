@@ -44,4 +44,5 @@ export interface PersonalInterface {
   tel: string;
   street: string;
   website: string;
+  whatsapp: string;
 }

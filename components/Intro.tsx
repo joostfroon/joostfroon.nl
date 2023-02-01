@@ -29,7 +29,6 @@ const ImageWrapper = styled.div`
   img {
     display: block;
     max-width: calc(100% - .5rem);
-    height: auto;
     border-radius: 50%;
     border: .25rem solid ${({ theme }) => theme.dark};
   }
@@ -43,7 +42,7 @@ const Wrapper = styled.article`
   padding: 6rem 0;
 
   @media all and (min-width: ${({ theme }) => theme.breakingpoints.sm}) {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 300px 2fr;
   }
 `;
 
@@ -72,7 +71,18 @@ export default function Intro() {
     <Container>
       <Wrapper>
         <ImageWrapper>
-          <Image loading="eager" priority src={image.url} alt={name} width={300} height={279.45} />
+          <Image 
+            loading="eager" 
+            priority 
+            src={image.url} 
+            alt={name} 
+            width={300} 
+            height={300}
+            style={{
+              width: '100%',
+              height: 'auto'
+            }} 
+          />
         </ImageWrapper>
         <div>
           <Heading>

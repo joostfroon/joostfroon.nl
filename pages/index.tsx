@@ -1,12 +1,13 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import Projects from '../components/projects/Projects';
 import { ProjectInterface, PersonalInterface } from '../interfaces';
 import HighlightedSkills from '../components/HighlightedSkills';
 import Intro from '../components/Intro';
 import Personal from '../components/Personal';
+import Floater from '../components/Floater';
 import { AppContextProvider } from '../context/app';
+
 interface Props {
   data: {
     projects: ProjectInterface[];
@@ -61,6 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
         tel
         street
         website
+        whatsapp
       }
     }
   `);
@@ -73,17 +75,13 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Index({ data }: Props) {
   return (
     <AppContextProvider {...data}>
-      <Head>
-        <title>{data.personal.description} | {data.personal.name}</title>
-        <meta name="description" content={data.personal.description} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <header>
         <Intro />
         <Personal />
         <HighlightedSkills />
       </header>
       <Projects />
+      <Floater />
     </AppContextProvider>
   );
 };
