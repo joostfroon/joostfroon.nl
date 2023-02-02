@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {data?.personal && (
         <Head>
           <link rel="icon" href="/favicon.ico" />
-          <title>{data.personal.description} | {data.personal.name}</title>
+          <title>{`${data.personal.description} | ${data.personal.name}`}</title>
           <meta name="title" content={data.personal.title} />
           <meta name="description" content={data.personal.description} />
           <meta name="theme-color" content="#000" />

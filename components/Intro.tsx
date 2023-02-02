@@ -18,20 +18,19 @@ const Heading = styled.h1`
   font-weight: 700;
 `;
 
+/* Not proud of this */
 const ImageWrapper = styled.div`
-  overflow: hidden;
-  display: none;
-
-  @media all and (min-width: ${({ theme }) => theme.breakingpoints.sm}) {
-    display: block;
-  }
+  width: calc(100% - .5rem);
+  position: relative;
 
   img {
-    display: block;
-    max-width: calc(100% - .5rem);
+    object-fit: contain;
+    position: relative !important;
+    height: unset !important;
     border-radius: 50%;
     border: .25rem solid ${({ theme }) => theme.dark};
   }
+  
 `;
 
 const Wrapper = styled.article`
@@ -73,6 +72,14 @@ export default function Intro() {
         <ImageWrapper>
           <Image 
             loading="eager" 
+            sizes='300px'
+            priority 
+            src={image.url} 
+            alt={name} 
+            fill
+          />
+          {/* <Image 
+            loading="eager" 
             priority 
             src={image.url} 
             alt={name} 
@@ -82,7 +89,7 @@ export default function Intro() {
               width: '100%',
               height: 'auto'
             }} 
-          />
+          /> */}
         </ImageWrapper>
         <div>
           <Heading>
