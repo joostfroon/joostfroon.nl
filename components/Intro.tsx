@@ -18,34 +18,35 @@ const Heading = styled.h1`
   font-weight: 700;
 `;
 
-/* Not proud of this */
 const ImageWrapper = styled.div`
-  width: calc(100% - .5rem);
-  position: relative;
-  display: none;
+  @media not print {
+    display: none;
+  }
 
   @media all and (min-width: ${({ theme }) => theme.breakingpoints.md}) {
     display: block;
   }
+  
   img {
-    object-fit: contain;
-    position: relative !important;
-    height: unset !important;
     border-radius: 50%;
     border: .25rem solid ${({ theme }) => theme.dark};
   }
-  
 `;
 
+const GRID_TEMPLATE_COLUMNS = '300px 2fr';
 const Wrapper = styled.article`
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 1fr;
   align-items: center;
   padding: 6rem 0;
+  
+  @media print {
+    grid-template-columns: ${GRID_TEMPLATE_COLUMNS};
+  }
 
   @media all and (min-width: ${({ theme }) => theme.breakingpoints.md}) {
-    grid-template-columns: 300px 2fr;
+    grid-template-columns: ${GRID_TEMPLATE_COLUMNS};
   }
 `;
 
@@ -71,29 +72,17 @@ export default function Intro() {
   const { personal: { name, title, image, street, city, number } } = useAppContext();
   
   return (
-    <Container>
+    <Container $small>
       <Wrapper>
         <ImageWrapper>
           <Image 
             loading="eager" 
-            sizes='300px'
             priority 
             src={image.url} 
-            alt={name} 
-            fill
+            alt={name}
+            width={280} 
+            height={280} 
           />
-          {/* <Image 
-            loading="eager" 
-            priority 
-            src={image.url} 
-            alt={name} 
-            width={300} 
-            height={300}
-            style={{
-              width: '100%',
-              height: 'auto'
-            }} 
-          /> */}
         </ImageWrapper>
         <div>
           <Heading>

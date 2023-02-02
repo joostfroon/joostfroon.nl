@@ -6,6 +6,7 @@ const H2 = styled.h2`
   margin: 0 0 2rem;
   padding-bottom: .5rem;
   border-bottom: .125rem solid ${({ theme }) => theme.dark};
+  font-weight: 400;
 `;
 
 export default function Title({ children }: { children: React.ReactNode }) {
