@@ -22,7 +22,11 @@ const Heading = styled.h1`
 const ImageWrapper = styled.div`
   width: calc(100% - .5rem);
   position: relative;
+  display: none;
 
+  @media all and (min-width: ${({ theme }) => theme.breakingpoints.md}) {
+    display: block;
+  }
   img {
     object-fit: contain;
     position: relative !important;
@@ -40,7 +44,7 @@ const Wrapper = styled.article`
   align-items: center;
   padding: 6rem 0;
 
-  @media all and (min-width: ${({ theme }) => theme.breakingpoints.sm}) {
+  @media all and (min-width: ${({ theme }) => theme.breakingpoints.md}) {
     grid-template-columns: 300px 2fr;
   }
 `;
