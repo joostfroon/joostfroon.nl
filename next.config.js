@@ -7,6 +7,10 @@ const nextConfig = {
       ssr: true,
     },
   },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

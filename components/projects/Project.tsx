@@ -25,7 +25,8 @@ const Description = styled.p`
   margin: 0 0 1.5rem;
   font-weight: 500;
   font-size: 1.125rem;
-
+  line-height: 125%;
+  
   @media print {
     font-size: 1rem;
   }
