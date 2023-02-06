@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ProjectInterface } from '../../interfaces';
+import { ProjectResInterface } from '../../interfaces';
 import Skills from '../skills/Skills';
 
 const RoleItem = styled.span`
@@ -56,7 +56,7 @@ export default function Project({
   description,
   skills, 
   role,
- }: ProjectInterface) {  
+ }: ProjectResInterface) {  
   return (
     <Wrapper>
       <Title>{`${name}, ${location} (${date})`}</Title>

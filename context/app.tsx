@@ -1,8 +1,8 @@
 import React, { createContext, useContext } from 'react';
-import { ProjectInterface, PersonalInterface } from '../interfaces';
+import { ProjectResInterface, PersonalInterface } from '../interfaces';
 
 interface Context {
-  projects: ProjectInterface[];
+  projects: ProjectResInterface[];
   personal: PersonalInterface;
 }
 
@@ -19,7 +19,7 @@ export const useAppContext = () => {
 
 interface Provider {
   children: React.ReactNode;
-  projects: ProjectInterface[];
+  projects: ProjectResInterface[];
   personal: PersonalInterface;
 
 }

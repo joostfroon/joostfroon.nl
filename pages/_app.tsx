@@ -5,11 +5,11 @@ import { Normalize } from 'styled-normalize';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../layout/global-style';
 import theme from '../layout/theme';
-import { ProjectInterface, PersonalInterface } from '../interfaces';
+import { ProjectResInterface, PersonalInterface } from '../interfaces';
 
 interface Props {
   data?: {
-    projects: ProjectInterface[];
+    projects: ProjectResInterface[];
     personal: PersonalInterface;
   }
 }

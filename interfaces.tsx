@@ -1,6 +1,16 @@
 import { string } from "prop-types";
 
-export interface ProjectInterface {
+export interface ProjectResInterface {
+  name: string;
+  id: string;
+  date: string;
+  location: string;
+  description: string;
+  skills: string[];
+  role: string[];
+}
+
+export interface ProjectReqInterface {
   name: string;
   id: string;
   startDate: string;

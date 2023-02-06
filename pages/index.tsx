@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import Projects from '../components/projects/Projects';
-import { ProjectInterface, PersonalInterface } from '../interfaces';
+import { ProjectResInterface, PersonalInterface } from '../interfaces';
 import HighlightedSkills from '../components/HighlightedSkills';
 import Intro from '../components/Intro';
 import Personal from '../components/Personal';
@@ -10,7 +10,7 @@ import { getAppData } from '../utils/getAppData';
 
 interface Props {
   data: {
-    projects: ProjectInterface[];
+    projects: ProjectResInterface[];
     personal: PersonalInterface;
   }
 }

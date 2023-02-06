@@ -1,9 +1,14 @@
 import { GraphQLClient, gql } from 'graphql-request';
-import { ProjectInterface, PersonalInterface } from '../interfaces';
+import { ProjectReqInterface,ProjectResInterface, PersonalInterface } from '../interfaces';
 import { getYear } from './getYear';
 
-interface Props {
-  projects: ProjectInterface[];
+interface PropsRes {
+  projects: ProjectResInterface[];
+  personal: PersonalInterface;
+}
+
+interface PropsReq {
+  projects: ProjectReqInterface[];
   personal: PersonalInterface;
 }
 
@@ -11,7 +16,7 @@ export const getAppData = async () => {
   const apiUrl = process.env.API_URL as string;
   const graphQLClient = new GraphQLClient(apiUrl);
 
-  const data: Props = await graphQLClient.request(gql`
+  const data: PropsReq = await graphQLClient.request(gql`
     query Projects {
       projects(orderBy: endDate_DESC, first: ${process.env.NUMBER_OF_PROJECTS}) {
         name
