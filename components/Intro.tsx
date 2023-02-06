@@ -11,6 +11,21 @@ const Name = styled.span`
 const Title = styled.span`
   display: inline-block;
   font-size: 3rem;
+  
+  .print-title {
+    display: none;
+    
+    @media print {
+      display: block;
+    }
+  }
+
+  .title {
+    @media print {
+      display: none;
+    }
+  }
+  
 `;
 
 const Heading = styled.h1`
@@ -69,7 +84,7 @@ const Item = styled.span`
 `;
 
 export default function Intro() {
-  const { personal: { name, title, image, street, city, number } } = useAppContext();
+  const { personal: { name, title, printTitle, image, street, city, number, birthday } } = useAppContext();
   
   return (
     <Container $small>
@@ -87,10 +102,13 @@ export default function Intro() {
         <div>
           <Heading>
             <Name>{name}</Name>
-            <Title>{title}</Title>
+            <Title>
+              <span className="title">{title}</span>
+              <span className="print-title">{printTitle}</span>
+            </Title>
           </Heading>
           <div>
-            <Item>October 4th 1987</Item>
+            <Item>{birthday}</Item>
             <Item as="a" target="_blank" rel="nofollow" href={`https://www.google.nl/maps/dir//${encodeURIComponent(`${name},${street} ${number},${city}`)}`}>Zevenaar, Gelderland, The Netherlands</Item>
             <Item>Dutch / English</Item>
           </div>

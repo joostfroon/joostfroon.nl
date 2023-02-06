@@ -18,6 +18,7 @@ interface Props {
 export const getStaticProps: GetStaticProps = async () => await getAppData();
 
 export default function Index({ data }: Props) {
+  
   return (
     <AppContextProvider {...data}>
       <header>

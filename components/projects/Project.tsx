@@ -56,13 +56,10 @@ export default function Project({
   description,
   skills, 
   role,
- }: ProjectInterface) {
-  const format = { year: 'numeric' } as { year: 'numeric' };
-  const dateFormat = new Date(date).toLocaleDateString('en-EN', format);
-  
+ }: ProjectInterface) {  
   return (
     <Wrapper>
-      <Title>{name}, {location} ({dateFormat})</Title>
+      <Title>{`${name}, ${location} (${date})`}</Title>
       <Role>{role.length > 0 && role.map(r => <RoleItem key={r}>{r.replaceAll('_', ' ')}</RoleItem>)}</Role>
       <Description>{description}</Description>
       <Skills skills={skills} />

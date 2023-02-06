@@ -9,7 +9,7 @@ const H2 = styled.h2`
   font-weight: 400;
 `;
 
-export default function Title({ children }: { children: React.ReactNode }) {
+export default function Title({ children }: { children: React.ReactNode | React.ReactNode[] }) {
   return <H2>{children}</H2>;
 }
   

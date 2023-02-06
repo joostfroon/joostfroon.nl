@@ -26,6 +26,7 @@ export interface PersonalInterface {
   birthday: string;
   description: string;
   title: string;
+  printTitle: string;
   name: string;
   nationality: string;
   number: string;
