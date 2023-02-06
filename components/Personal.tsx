@@ -51,7 +51,7 @@ export default function Personal() {
       languages, 
       linkedin, 
       website, 
-      gitlab, 
+      gitHub, 
       hobbies,
     } 
   } = useAppContext();
@@ -86,11 +86,6 @@ export default function Personal() {
                 <td>Telephone:</td>
                 <td>{tel}</td>
               </tr>
-            </tbody>
-          </Table>
-
-          <Table>
-            <tbody>
               <tr>
                 <td>Languages:</td>
                 <td>
@@ -99,6 +94,11 @@ export default function Personal() {
                   ))}
                 </td>
               </tr>
+            </tbody>
+          </Table>
+
+          <Table>
+            <tbody>
               <tr>
                 <td>Based:</td>
                 <td>{city}, {province}, {country}</td>
@@ -115,10 +115,10 @@ export default function Personal() {
                 <td>Website:</td>
                 <td>{website}</td>
               </tr>
-              {/* <tr>
+              <tr>
                 <td>Code:</td>
-                <td>{gitlab}</td>
-              </tr> */}
+                <td>{gitHub}</td>
+              </tr>
               
             </tbody>
           </Table>

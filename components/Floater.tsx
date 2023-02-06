@@ -4,6 +4,7 @@ import Linkedin from '../icons/Linkedin';
 import Whatsapp from '../icons/Whatsapp';
 import Phone from '../icons/Phone';
 import Print from '../icons/Print';
+import GitHub from '../icons/GitHub';
 
 const Icon = styled.svg`
   height: 2rem;
@@ -61,6 +62,8 @@ export default function Contact() {
 
   return (
     <Wrapper>
+      
+      <Item aria-label="GitHub" target="_blank" href={personal.gitHub}><Icon as={GitHub} /></Item>
       <Item aria-label="Linkedin" target="_blank" href={personal.linkedin}><Icon as={Linkedin} /></Item>
       <Item aria-label="Whatsapp" target="_blank" href={`https://api.whatsapp.com/send?phone=${personal.whatsapp}`}><Icon as={Whatsapp} /></Item>
       <Item aria-label="Call" target="_blank" href={`tel:${personal.tel}`}><Icon as={Phone} /></Item>

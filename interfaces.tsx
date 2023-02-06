@@ -42,7 +42,7 @@ export interface PersonalInterface {
   nationality: string;
   number: string;
   email: string;
-  gitlab: string;
+  gitHub: string;
   highlighedSkills: string[];
   hobbies: string;
   country: string;

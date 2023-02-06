@@ -45,7 +45,7 @@ export const getAppData = async () => {
         companyName
         city
         province
-        gitlab
+        gitHub
         linkedin
         image {
           url
