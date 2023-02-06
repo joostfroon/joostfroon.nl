@@ -3,7 +3,8 @@ import { string } from "prop-types";
 export interface ProjectInterface {
   name: string;
   id: string;
-  date: Date;
+  startDate: string;
+  endDate: string;
   location: string;
   description: string;
   skills: string[];

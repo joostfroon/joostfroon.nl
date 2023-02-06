@@ -1,5 +1,6 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import { ProjectInterface, PersonalInterface } from '../interfaces';
+import { getYear } from './getYear';
 
 interface Props {
   projects: ProjectInterface[];
@@ -12,10 +13,11 @@ export const getAppData = async () => {
 
   const data: Props = await graphQLClient.request(gql`
     query Projects {
-      projects(orderBy: date_DESC, first: ${process.env.NUMBER_OF_PROJECTS}) {
+      projects(orderBy: endDate_DESC, first: ${process.env.NUMBER_OF_PROJECTS}) {
         name
         id
-        date
+        startDate
+        endDate
         location
         description
         skills
@@ -60,9 +62,14 @@ export const getAppData = async () => {
   `);
 
   const getProjects = () => data.projects.map((project) => {
+    const startDate = getYear(project.startDate);
+    const endDate = getYear(project.endDate);
+
+    const displayYear = startDate === endDate ? endDate : `${startDate} - ${endDate}`
+
     return { 
       ...project, 
-      date: new Date(project.date).toLocaleDateString('en-EN', { year: 'numeric' } as { year: 'numeric' }) 
+      date: displayYear,
     }
   });
 
